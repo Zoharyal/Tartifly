@@ -30,12 +30,14 @@ Route::get('/voyages', 'VoyageController@index');
 Route::get('/voyages/{id}', 'VoyageController@show');
 
 //Admin
-Route::get('/admin/voyages', function () {
-    echo "Voyages";
-});
 
-Route::get('/admin/voyages/{id}', function ($id) {
-    return "admin Voyages".$id;
+Route::prefix('admin')->group(function() {
+    Route::get('voyages', 'AdminController@index')->middleware('admin');
+    Route::get('voyages/{id}', 'AdminController@show')->middleware('admin');
+    Route::post('search', 'AdminController@search')->name('search');
+    Route::get('create', 'AdminController@create')->middleware('auth');
+    Route::post('store', 'AdminController@store')->name('store')->middleware('auth');
+    Route::put('voyages/{id}/edit', 'AdminController@edit')->name('edit')->middleware('auth');
 });
 
 
@@ -46,3 +48,7 @@ Route::get('/admin/voyages/{id}', function ($id) {
 //});
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

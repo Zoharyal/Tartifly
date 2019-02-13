@@ -18,7 +18,7 @@
 									<a href="tours.html">Tours</a>
 									<ul class="dropdown">
 										<li><a href="#">Destination</a></li>
-										<li><a href="#">Cruises</a></li>
+										<li><a href="#">Cruiseseeze</a></li>
 										<li><a href="#">Hotels</a></li>
 										<li><a href="#">Booking</a></li>
 									</ul>
@@ -27,7 +27,20 @@
 								<li><a href="services.html">Services</a></li>
 								<li><a href="blog.html">Blog</a></li>
 								<li><a href="about.html">About</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li>@auth
+								<a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+									@else
+									<a href="{{ url('login')}}">Se connecter</a>
+									@endif
+								</li>
 							</ul>
 						</div>
 					</div>

@@ -18,7 +18,7 @@
 									<a href="tours.html">Tours</a>
 									<ul class="dropdown">
 										<li><a href="#">Destination</a></li>
-										<li><a href="#">Cruises</a></li>
+										<li><a href="#">Cruisezezees</a></li>
 										<li><a href="#">Hotels</a></li>
 										<li><a href="#">Booking</a></li>
 									</ul>
@@ -27,7 +27,13 @@
 								<li><a href="services.html">Services</a></li>
 								<li><a href="blog.html">Blog</a></li>
 								<li class="active"><a href="about.html">About</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li>@auth
+									<a>Mon compte</a>
+									@else
+									<a href="{{ url('login')}}">Se connecter</a>
+									@endif
+								</li>
+								
 							</ul>
 						</div>
 					</div>
